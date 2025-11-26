@@ -1,0 +1,49 @@
+{
+    "testcase": {
+        "section": "C.1",
+        "description": "Tests that a non-existent command prints 'Command not found!'.",
+        "cmds": [
+            {
+                "expect_exit": false,
+                "cmd": "nonexistentcommand",
+                "sequential_outputs": [
+                    {
+                        "text": "Command not found!",
+                        "is_re": false,
+                        "negative_match": false
+                    }
+                ],
+                "nonsequential_outputs": [],
+                "ignore_output": false,
+                "cwd_after": null
+            }
+        ],
+        "timeout": 2.0,
+        "strict_prompt": false,
+        "requires_test_folder": false
+    },
+    "events": [
+        {
+            "time": "2025-11-19T22:10:43.179959+05:30",
+            "type": "output",
+            "details": "<osnuser@osntesting:~> "
+        },
+        {
+            "time": "2025-11-19T22:10:43.180314+05:30",
+            "type": "input",
+            "details": "GenericCmd(expect_exit=False, cmd='nonexistentcommand', sequential_outputs=[Line(text='Command not found!', is_re=False, negative_match=False)], nonsequential_outputs=[], ignore_output=False, cwd_after=None)"
+        },
+        {
+            "time": "2025-11-19T22:10:43.232253+05:30",
+            "type": "output",
+            "details": "Command not found!"
+        },
+        {
+            "time": "2025-11-19T22:10:43.232689+05:30",
+            "type": "output",
+            "details": "<osnuser@osntesting:~> "
+        }
+    ],
+    "raw_log": "##### START RAW OUTPUT #####\n<osnuser@osntesting:~> nonexistentcommand\nCommand not found!\r\n<osnuser@osntesting:~> ",
+    "py_log": "2025-11-19 22:10:42,278 - tester.311bc858-10ec-4a0e-8d6b-9e4a892adf67 - INFO - Spawned child:\n    <pexpect.pty_spawn.spawn object at 0x78f014e8d1c0>\n    command: /usr/bin/docker\n    args: [b'/usr/bin/docker', b'run', b'--name', b'tester_9a4d8e86fcbc486aa8cdf8ccfe18d709', b'-i', b'-t', b'--rm', b'--init', b'-h', b'osntesting', b'-v', b'/tmp/tmphfe9ann8:/app', b'-w', b'/app', b'shell_tester:latest', b'/app/shell.out']\n    buffer (last 100 chars): ''\n    before (last 100 chars): ''\n    after: None\n    match: None\n    match_index: None\n    exitstatus: None\n    flag_eof: False\n    pid: 3064086\n    child_fd: 107\n    closed: False\n    timeout: 2.0\n    delimiter: <class 'pexpect.exceptions.EOF'>\n    logfile: <tester.FlexibleIO object at 0x78f017191cc0>\n    logfile_read: None\n    logfile_send: None\n    maxread: 2000\n    ignorecase: False\n    searchwindowsize: None\n    delaybeforesend: 0.05\n    delayafterclose: 0.1\n    delayafterterminate: 0.1\n2025-11-19 22:10:43,180 - tester.311bc858-10ec-4a0e-8d6b-9e4a892adf67 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-19T22:10:43.179959+05:30\",\n        \"type\": \"output\",\n        \"details\": \"<osnuser@osntesting:~> \"\n    }\n2025-11-19 22:10:43,180 - tester.311bc858-10ec-4a0e-8d6b-9e4a892adf67 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-19T22:10:43.180314+05:30\",\n        \"type\": \"input\",\n        \"details\": \"GenericCmd(expect_exit=False, cmd='nonexistentcommand', sequential_outputs=[Line(text='Command not found!', is_re=False, negative_match=False)], nonsequential_outputs=[], ignore_output=False, cwd_after=None)\"\n    }\n2025-11-19 22:10:43,232 - tester.311bc858-10ec-4a0e-8d6b-9e4a892adf67 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-19T22:10:43.232253+05:30\",\n        \"type\": \"output\",\n        \"details\": \"Command not found!\"\n    }\n2025-11-19 22:10:43,232 - tester.311bc858-10ec-4a0e-8d6b-9e4a892adf67 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-19T22:10:43.232689+05:30\",\n        \"type\": \"output\",\n        \"details\": \"<osnuser@osntesting:~> \"\n    }\n2025-11-19 22:10:43,751 - tester.311bc858-10ec-4a0e-8d6b-9e4a892adf67 - WARNING - Failed to remove container tester_9a4d8e86fcbc486aa8cdf8ccfe18d709: 409 Client Error for http+docker://localhost/v1.51/containers/18c6f3e3c86a58a1747cca108dddbd49f5f1f22b37fc0cbd414f2e3194101e6e?v=False&link=False&force=True: Conflict (\"removal of container 18c6f3e3c86a58a1747cca108dddbd49f5f1f22b37fc0cbd414f2e3194101e6e is already in progress\")\n2025-11-19 22:10:43,752 - tester.311bc858-10ec-4a0e-8d6b-9e4a892adf67 - INFO - Finished running testcase. Child info at exit:\n    <pexpect.pty_spawn.spawn object at 0x78f014e8d1c0>\n    command: /usr/bin/docker\n    args: [b'/usr/bin/docker', b'run', b'--name', b'tester_9a4d8e86fcbc486aa8cdf8ccfe18d709', b'-i', b'-t', b'--rm', b'--init', b'-h', b'osntesting', b'-v', b'/tmp/tmphfe9ann8:/app', b'-w', b'/app', b'shell_tester:latest', b'/app/shell.out']\n    buffer (last 100 chars): ''\n    before (last 100 chars): ''\n    after: '<osnuser@osntesting:~> '\n    match: <re.Match object; span=(0, 23), match='<osnuser@osntesting:~> '>\n    match_index: 0\n    exitstatus: None\n    flag_eof: False\n    pid: 3064086\n    child_fd: -1\n    closed: True\n    timeout: 2.0\n    delimiter: <class 'pexpect.exceptions.EOF'>\n    logfile: <tester.FlexibleIO object at 0x78f017191cc0>\n    logfile_read: None\n    logfile_send: None\n    maxread: 2000\n    ignorecase: False\n    searchwindowsize: None\n    delaybeforesend: 0.05\n    delayafterclose: 0.1\n    delayafterterminate: 0.1\n2025-11-19 22:10:43,752 - tester.311bc858-10ec-4a0e-8d6b-9e4a892adf67 - INFO - Cleaned up temp_dir: /tmp/tmphfe9ann8\n"
+}
