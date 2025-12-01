@@ -1,0 +1,145 @@
+{
+    "testcase": {
+        "section": "D.2",
+        "description": "Tests a background command that involves both a pipe and output redirection.",
+        "cmds": [
+            {
+                "expect_exit": false,
+                "skip_prompt_check": false,
+                "cmd": "ls test | sort -r > bg_out.txt &",
+                "sequential_outputs": [],
+                "nonsequential_outputs": [
+                    {
+                        "text": "\\\\[1\\\\] \\\\d+",
+                        "is_re": true,
+                        "negative_match": false
+                    }
+                ],
+                "ignore_output": false,
+                "cwd_after": null
+            },
+            {
+                "expect_exit": false,
+                "skip_prompt_check": false,
+                "cmd": "cat bg_out.txt",
+                "sequential_outputs": [
+                    {
+                        "text": "folder3",
+                        "is_re": false,
+                        "negative_match": false
+                    },
+                    {
+                        "text": "folder2",
+                        "is_re": false,
+                        "negative_match": false
+                    },
+                    {
+                        "text": "folder1",
+                        "is_re": false,
+                        "negative_match": false
+                    },
+                    {
+                        "text": "file5.txt",
+                        "is_re": false,
+                        "negative_match": false
+                    },
+                    {
+                        "text": "file4.txt",
+                        "is_re": false,
+                        "negative_match": false
+                    }
+                ],
+                "nonsequential_outputs": [
+                    {
+                        "text": "(ls\\\\stest\\\\s\\\\|\\\\ssort\\\\s-r\\\\s>\\\\sbg_out.txt|ls\\\\stest|sort\\\\s-r\\\\s>\\\\sbg_out.txt|ls|sort) with pid \\\\d+ exited normally",
+                        "is_re": true,
+                        "negative_match": false
+                    }
+                ],
+                "ignore_output": false,
+                "cwd_after": null
+            },
+            {
+                "expect_exit": false,
+                "skip_prompt_check": false,
+                "cmd": "rm bg_out.txt",
+                "sequential_outputs": [],
+                "nonsequential_outputs": [],
+                "ignore_output": false,
+                "cwd_after": null
+            }
+        ],
+        "timeout": 2.0,
+        "strict_prompt": false,
+        "requires_test_folder": true
+    },
+    "events": [
+        {
+            "time": "2025-11-30T19:33:53.005427+05:30",
+            "type": "output",
+            "details": "<osnuser@osntesting:~> "
+        },
+        {
+            "time": "2025-11-30T19:33:53.005710+05:30",
+            "type": "input",
+            "details": "GenericCmd(expect_exit=False, skip_prompt_check=False, cmd='ls test | sort -r > bg_out.txt &', sequential_outputs=[], nonsequential_outputs=[Line(text='\\\\\\\\[1\\\\\\\\] \\\\\\\\d+', is_re=True, negative_match=False)], ignore_output=False, cwd_after=None)"
+        },
+        {
+            "time": "2025-11-30T19:33:53.057422+05:30",
+            "type": "output",
+            "details": "[1] 29"
+        },
+        {
+            "time": "2025-11-30T19:33:53.057607+05:30",
+            "type": "output",
+            "details": "<osnuser@osntesting:~> "
+        },
+        {
+            "time": "2025-11-30T19:33:53.057713+05:30",
+            "type": "input",
+            "details": "GenericCmd(expect_exit=False, skip_prompt_check=False, cmd='cat bg_out.txt', sequential_outputs=[Line(text='folder3', is_re=False, negative_match=False), Line(text='folder2', is_re=False, negative_match=False), Line(text='folder1', is_re=False, negative_match=False), Line(text='file5.txt', is_re=False, negative_match=False), Line(text='file4.txt', is_re=False, negative_match=False)], nonsequential_outputs=[Line(text='(ls\\\\\\\\stest\\\\\\\\s\\\\\\\\|\\\\\\\\ssort\\\\\\\\s-r\\\\\\\\s>\\\\\\\\sbg_out.txt|ls\\\\\\\\stest|sort\\\\\\\\s-r\\\\\\\\s>\\\\\\\\sbg_out.txt|ls|sort) with pid \\\\\\\\d+ exited normally', is_re=True, negative_match=False)], ignore_output=False, cwd_after=None)"
+        },
+        {
+            "time": "2025-11-30T19:33:53.109974+05:30",
+            "type": "output",
+            "details": "folder3"
+        },
+        {
+            "time": "2025-11-30T19:33:53.110348+05:30",
+            "type": "output",
+            "details": "folder2"
+        },
+        {
+            "time": "2025-11-30T19:33:53.110582+05:30",
+            "type": "output",
+            "details": "folder1"
+        },
+        {
+            "time": "2025-11-30T19:33:53.110759+05:30",
+            "type": "output",
+            "details": "file5.txt"
+        },
+        {
+            "time": "2025-11-30T19:33:53.110942+05:30",
+            "type": "output",
+            "details": "file4.txt"
+        },
+        {
+            "time": "2025-11-30T19:33:53.111364+05:30",
+            "type": "output",
+            "details": "<osnuser@osntesting:~> "
+        },
+        {
+            "time": "2025-11-30T19:33:53.111579+05:30",
+            "type": "input",
+            "details": "GenericCmd(expect_exit=False, skip_prompt_check=False, cmd='rm bg_out.txt', sequential_outputs=[], nonsequential_outputs=[], ignore_output=False, cwd_after=None)"
+        },
+        {
+            "time": "2025-11-30T19:33:53.163415+05:30",
+            "type": "output",
+            "details": "<osnuser@osntesting:~> "
+        }
+    ],
+    "raw_log": "##### START RAW OUTPUT #####\n<osnuser@osntesting:~> ls test | sort -r > bg_out.txt &\n[1] 29\r\n<osnuser@osntesting:~> cat bg_out.txt\nfolder3\r\nfolder2\r\nfolder1\r\nfile5.txt\r\nfile4.txt\r\n<osnuser@osntesting:~> rm bg_out.txt\n<osnuser@osntesting:~> ",
+    "py_log": "2025-11-30 19:33:52,140 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - INFO - Spawned child:\n    <pexpect.pty_spawn.spawn object at 0x7cb2ff3e1c70>\n    command: /usr/bin/docker\n    args: [b'/usr/bin/docker', b'run', b'--name', b'tester_dd654d5bc4134497aa9070147b372ea4', b'-i', b'-t', b'--rm', b'--init', b'-h', b'osntesting', b'-v', b'/tmp/tmpc9qjtwzy:/app', b'-w', b'/app', b'shell_tester:latest', b'/app/shell.out']\n    buffer (last 100 chars): ''\n    before (last 100 chars): ''\n    after: None\n    match: None\n    match_index: None\n    exitstatus: None\n    flag_eof: False\n    pid: 1357440\n    child_fd: 22\n    closed: False\n    timeout: 2.0\n    delimiter: <class 'pexpect.exceptions.EOF'>\n    logfile: <tester.FlexibleIO object at 0x7cb2ff3f9d80>\n    logfile_read: None\n    logfile_send: None\n    maxread: 2000\n    ignorecase: False\n    searchwindowsize: None\n    delaybeforesend: 0.05\n    delayafterclose: 0.1\n    delayafterterminate: 0.1\n2025-11-30 19:33:53,005 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.005427+05:30\",\n        \"type\": \"output\",\n        \"details\": \"<osnuser@osntesting:~> \"\n    }\n2025-11-30 19:33:53,005 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.005710+05:30\",\n        \"type\": \"input\",\n        \"details\": \"GenericCmd(expect_exit=False, skip_prompt_check=False, cmd='ls test | sort -r > bg_out.txt &', sequential_outputs=[], nonsequential_outputs=[Line(text='\\\\\\\\\\\\\\\\[1\\\\\\\\\\\\\\\\] \\\\\\\\\\\\\\\\d+', is_re=True, negative_match=False)], ignore_output=False, cwd_after=None)\"\n    }\n2025-11-30 19:33:53,057 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.057422+05:30\",\n        \"type\": \"output\",\n        \"details\": \"[1] 29\"\n    }\n2025-11-30 19:33:53,057 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.057607+05:30\",\n        \"type\": \"output\",\n        \"details\": \"<osnuser@osntesting:~> \"\n    }\n2025-11-30 19:33:53,057 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.057713+05:30\",\n        \"type\": \"input\",\n        \"details\": \"GenericCmd(expect_exit=False, skip_prompt_check=False, cmd='cat bg_out.txt', sequential_outputs=[Line(text='folder3', is_re=False, negative_match=False), Line(text='folder2', is_re=False, negative_match=False), Line(text='folder1', is_re=False, negative_match=False), Line(text='file5.txt', is_re=False, negative_match=False), Line(text='file4.txt', is_re=False, negative_match=False)], nonsequential_outputs=[Line(text='(ls\\\\\\\\\\\\\\\\stest\\\\\\\\\\\\\\\\s\\\\\\\\\\\\\\\\|\\\\\\\\\\\\\\\\ssort\\\\\\\\\\\\\\\\s-r\\\\\\\\\\\\\\\\s>\\\\\\\\\\\\\\\\sbg_out.txt|ls\\\\\\\\\\\\\\\\stest|sort\\\\\\\\\\\\\\\\s-r\\\\\\\\\\\\\\\\s>\\\\\\\\\\\\\\\\sbg_out.txt|ls|sort) with pid \\\\\\\\\\\\\\\\d+ exited normally', is_re=True, negative_match=False)], ignore_output=False, cwd_after=None)\"\n    }\n2025-11-30 19:33:53,110 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.109974+05:30\",\n        \"type\": \"output\",\n        \"details\": \"folder3\"\n    }\n2025-11-30 19:33:53,110 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.110348+05:30\",\n        \"type\": \"output\",\n        \"details\": \"folder2\"\n    }\n2025-11-30 19:33:53,110 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.110582+05:30\",\n        \"type\": \"output\",\n        \"details\": \"folder1\"\n    }\n2025-11-30 19:33:53,110 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.110759+05:30\",\n        \"type\": \"output\",\n        \"details\": \"file5.txt\"\n    }\n2025-11-30 19:33:53,110 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.110942+05:30\",\n        \"type\": \"output\",\n        \"details\": \"file4.txt\"\n    }\n2025-11-30 19:33:53,111 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.111364+05:30\",\n        \"type\": \"output\",\n        \"details\": \"<osnuser@osntesting:~> \"\n    }\n2025-11-30 19:33:53,111 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.111579+05:30\",\n        \"type\": \"input\",\n        \"details\": \"GenericCmd(expect_exit=False, skip_prompt_check=False, cmd='rm bg_out.txt', sequential_outputs=[], nonsequential_outputs=[], ignore_output=False, cwd_after=None)\"\n    }\n2025-11-30 19:33:53,163 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T19:33:53.163415+05:30\",\n        \"type\": \"output\",\n        \"details\": \"<osnuser@osntesting:~> \"\n    }\n2025-11-30 19:33:54,036 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - WARNING - Failed to remove container tester_dd654d5bc4134497aa9070147b372ea4: 409 Client Error for http+docker://localhost/v1.51/containers/97076b25e0f18f891641573ce2133ba42cede4718881a063538368a852f8e610?v=False&link=False&force=True: Conflict (\"removal of container 97076b25e0f18f891641573ce2133ba42cede4718881a063538368a852f8e610 is already in progress\")\n2025-11-30 19:33:54,036 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - INFO - Finished running testcase. Child info at exit:\n    <pexpect.pty_spawn.spawn object at 0x7cb2ff3e1c70>\n    command: /usr/bin/docker\n    args: [b'/usr/bin/docker', b'run', b'--name', b'tester_dd654d5bc4134497aa9070147b372ea4', b'-i', b'-t', b'--rm', b'--init', b'-h', b'osntesting', b'-v', b'/tmp/tmpc9qjtwzy:/app', b'-w', b'/app', b'shell_tester:latest', b'/app/shell.out']\n    buffer (last 100 chars): ''\n    before (last 100 chars): ''\n    after: '<osnuser@osntesting:~> '\n    match: <re.Match object; span=(0, 23), match='<osnuser@osntesting:~> '>\n    match_index: 0\n    exitstatus: None\n    flag_eof: False\n    pid: 1357440\n    child_fd: -1\n    closed: True\n    timeout: 2.0\n    delimiter: <class 'pexpect.exceptions.EOF'>\n    logfile: <tester.FlexibleIO object at 0x7cb2ff3f9d80>\n    logfile_read: None\n    logfile_send: None\n    maxread: 2000\n    ignorecase: False\n    searchwindowsize: None\n    delaybeforesend: 0.05\n    delayafterclose: 0.1\n    delayafterterminate: 0.1\n2025-11-30 19:33:54,037 - tester.e1cf4a1e-f68d-4b5e-9f69-5c53ee314637 - INFO - Cleaned up temp_dir: /tmp/tmpc9qjtwzy\n"
+}

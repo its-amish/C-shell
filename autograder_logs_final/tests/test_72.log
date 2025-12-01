@@ -1,0 +1,50 @@
+{
+    "testcase": {
+        "section": "C.2",
+        "description": "Tests input redirection from a non-existent file, expecting an error.",
+        "cmds": [
+            {
+                "expect_exit": false,
+                "skip_prompt_check": false,
+                "cmd": "cat < no_such_file.txt",
+                "sequential_outputs": [
+                    {
+                        "text": "No such file or directory!?",
+                        "is_re": true,
+                        "negative_match": false
+                    }
+                ],
+                "nonsequential_outputs": [],
+                "ignore_output": false,
+                "cwd_after": null
+            }
+        ],
+        "timeout": 2.0,
+        "strict_prompt": false,
+        "requires_test_folder": false
+    },
+    "events": [
+        {
+            "time": "2025-11-30T05:55:45.095492+05:30",
+            "type": "output",
+            "details": "<osnuser@osntesting:~> "
+        },
+        {
+            "time": "2025-11-30T05:55:45.095907+05:30",
+            "type": "input",
+            "details": "GenericCmd(expect_exit=False, skip_prompt_check=False, cmd='cat < no_such_file.txt', sequential_outputs=[Line(text='No such file or directory!?', is_re=True, negative_match=False)], nonsequential_outputs=[], ignore_output=False, cwd_after=None)"
+        },
+        {
+            "time": "2025-11-30T05:55:45.147579+05:30",
+            "type": "output",
+            "details": "No such file or directory"
+        },
+        {
+            "time": "2025-11-30T05:55:45.148139+05:30",
+            "type": "output",
+            "details": "<osnuser@osntesting:~> "
+        }
+    ],
+    "raw_log": "##### START RAW OUTPUT #####\n<osnuser@osntesting:~> cat < no_such_file.txt\nNo such file or directory\r\n<osnuser@osntesting:~> ",
+    "py_log": "2025-11-30 05:55:43,989 - tester.b8ff8b5d-41c6-4ada-8da8-966e838297db - INFO - Spawned child:\n    <pexpect.pty_spawn.spawn object at 0x7984fa670b60>\n    command: /usr/bin/docker\n    args: [b'/usr/bin/docker', b'run', b'--name', b'tester_d52d2dfc15b946868f4cea7ed7d00c11', b'-i', b'-t', b'--rm', b'--init', b'-h', b'osntesting', b'-v', b'/tmp/tmpd1voltli:/app', b'-w', b'/app', b'shell_tester:latest', b'/app/shell.out']\n    buffer (last 100 chars): ''\n    before (last 100 chars): ''\n    after: None\n    match: None\n    match_index: None\n    exitstatus: None\n    flag_eof: False\n    pid: 21971\n    child_fd: 211\n    closed: False\n    timeout: 2.0\n    delimiter: <class 'pexpect.exceptions.EOF'>\n    logfile: <tester.FlexibleIO object at 0x798518665cc0>\n    logfile_read: None\n    logfile_send: None\n    maxread: 2000\n    ignorecase: False\n    searchwindowsize: None\n    delaybeforesend: 0.05\n    delayafterclose: 0.1\n    delayafterterminate: 0.1\n2025-11-30 05:55:45,095 - tester.b8ff8b5d-41c6-4ada-8da8-966e838297db - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T05:55:45.095492+05:30\",\n        \"type\": \"output\",\n        \"details\": \"<osnuser@osntesting:~> \"\n    }\n2025-11-30 05:55:45,096 - tester.b8ff8b5d-41c6-4ada-8da8-966e838297db - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T05:55:45.095907+05:30\",\n        \"type\": \"input\",\n        \"details\": \"GenericCmd(expect_exit=False, skip_prompt_check=False, cmd='cat < no_such_file.txt', sequential_outputs=[Line(text='No such file or directory!?', is_re=True, negative_match=False)], nonsequential_outputs=[], ignore_output=False, cwd_after=None)\"\n    }\n2025-11-30 05:55:45,147 - tester.b8ff8b5d-41c6-4ada-8da8-966e838297db - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T05:55:45.147579+05:30\",\n        \"type\": \"output\",\n        \"details\": \"No such file or directory\"\n    }\n2025-11-30 05:55:45,148 - tester.b8ff8b5d-41c6-4ada-8da8-966e838297db - DEBUG - Received event:\n    {\n        \"time\": \"2025-11-30T05:55:45.148139+05:30\",\n        \"type\": \"output\",\n        \"details\": \"<osnuser@osntesting:~> \"\n    }\n2025-11-30 05:55:45,695 - tester.b8ff8b5d-41c6-4ada-8da8-966e838297db - WARNING - Failed to remove container tester_d52d2dfc15b946868f4cea7ed7d00c11: 409 Client Error for http+docker://localhost/v1.51/containers/474e9d1c0a1fae7c455ea651792f08f15d39db228d08a37e014c15f9deef7732?v=False&link=False&force=True: Conflict (\"removal of container 474e9d1c0a1fae7c455ea651792f08f15d39db228d08a37e014c15f9deef7732 is already in progress\")\n2025-11-30 05:55:45,695 - tester.b8ff8b5d-41c6-4ada-8da8-966e838297db - INFO - Finished running testcase. Child info at exit:\n    <pexpect.pty_spawn.spawn object at 0x7984fa670b60>\n    command: /usr/bin/docker\n    args: [b'/usr/bin/docker', b'run', b'--name', b'tester_d52d2dfc15b946868f4cea7ed7d00c11', b'-i', b'-t', b'--rm', b'--init', b'-h', b'osntesting', b'-v', b'/tmp/tmpd1voltli:/app', b'-w', b'/app', b'shell_tester:latest', b'/app/shell.out']\n    buffer (last 100 chars): ''\n    before (last 100 chars): ''\n    after: '<osnuser@osntesting:~> '\n    match: <re.Match object; span=(0, 23), match='<osnuser@osntesting:~> '>\n    match_index: 0\n    exitstatus: None\n    flag_eof: False\n    pid: 21971\n    child_fd: -1\n    closed: True\n    timeout: 2.0\n    delimiter: <class 'pexpect.exceptions.EOF'>\n    logfile: <tester.FlexibleIO object at 0x798518665cc0>\n    logfile_read: None\n    logfile_send: None\n    maxread: 2000\n    ignorecase: False\n    searchwindowsize: None\n    delaybeforesend: 0.05\n    delayafterclose: 0.1\n    delayafterterminate: 0.1\n2025-11-30 05:55:45,696 - tester.b8ff8b5d-41c6-4ada-8da8-966e838297db - INFO - Cleaned up temp_dir: /tmp/tmpd1voltli\n"
+}
